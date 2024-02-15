@@ -9,11 +9,15 @@ class PredictPipeline:
         pass
 
     def predict(self,features):
-        try:
+        try:    
             model_path=os.path.join("artifacts","model.pkl")
-            preprocessor_path=os.path.join('artifacts','preprocessor.pkl')
+            print(model_path)
+            preprocessor_path=os.path.join('artifacts','proprocessor.pkl')
+            print(preprocessor_path)
+            print("Before landing")
             model=load_object(file_path=model_path)
             preprocessor=load_object(file_path=preprocessor_path)
+            print("After loading")
             data_scaled=preprocessor.transform(features)
             preds=model.predict(data_scaled)
             return preds
